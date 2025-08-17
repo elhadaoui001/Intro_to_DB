@@ -13,8 +13,8 @@ def create_database():
         # Connect to MySQL server
         connection = mysql.connector.connect(
             host='localhost',
-            user=user,
-            password=password
+            user=Hamza,
+            password=123456AZEnb@@/
         )
 
         if connection.is_connected():
