@@ -18,16 +18,16 @@ def create_database():
             cursor = connection.cursor()
             # Use IF NOT EXISTS to prevent an error if the database already exists
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
-            print("Database 'alx_book_store' created successfully!")
+            print("Database 'alx_book_store' created successfully! 🎉")
 
     except Error as e:
-        print(f"Error connecting to MySQL: {e}")
+        print(f"Error connecting to MySQL: {e} ❌")
 
     finally:
         if connection and connection.is_connected():
             cursor.close()
             connection.close()
-            print("MySQL connection closed.")
+            print("MySQL connection closed. 👋")
 
 if __name__ == "__main__":
     create_database()
