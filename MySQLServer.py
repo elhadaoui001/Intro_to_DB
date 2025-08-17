@@ -1,24 +1,21 @@
-#!/usr/bin/python3
-"""
-A simple Python script to create the 'alx_book_store' database
-"""
+# MySQLServer.py
 
 import mysql.connector
 from mysql.connector import Error
 
 def create_database():
-    connection = None
     try:
-        # Connect to MySQL server (adjust user & password to your setup)
+        # Connect to MySQL server
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",       # <-- replace with your MySQL username
-            password="password" # <-- replace with your MySQL password
+            host='localhost',
+            user='root',        # change if your username is different
+            password='your_password'  # replace with your MySQL root password
         )
 
         if connection.is_connected():
             cursor = connection.cursor()
-            # Create database if not exists
+            
+            # Create database if it does not exist
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
             print("Database 'alx_book_store' created successfully!")
 
@@ -26,10 +23,11 @@ def create_database():
         print(f"Error while connecting to MySQL: {e}")
 
     finally:
-        if connection is not None and connection.is_connected():
+        # Close cursor and connection
+        if 'cursor' in locals() and cursor.is_connected():
             cursor.close()
+        if connection.is_connected():
             connection.close()
-            # print("MySQL connection closed.")  # optional
 
 if __name__ == "__main__":
     create_database()
